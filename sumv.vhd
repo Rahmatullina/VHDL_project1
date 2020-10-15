@@ -10,15 +10,11 @@ end sumv;
 architecture arch of sumv is
 begin
 	process(a,b) is	
-	variable tmp1 : unsigned(8 downto 0);
-	variable tmp2 : unsigned(8 downto 0);
-	variable tmp3 : unsigned(8 downto 0);
+	variable tmp : unsigned(8 downto 0);
 	begin		
-			tmp1 := unsigned(a( 7 downto  0)) * unsigned(k(0 downto 0)) + unsigned(b( 7 downto  0));
-			tmp2 := unsigned(a(15 downto  8)) * unsigned(k(1 downto 1)) + unsigned(b(15 downto  8)); 
-			tmp3 := unsigned(a(23 downto 16)) * unsigned(k(2 downto 2)) + unsigned(b(23 downto 16));	
-			result( 8 downto  0) <= std_logic_vector(tmp1);
-			result(17 downto  9) <= std_logic_vector(tmp2);
-			result(26 downto 18) <= std_logic_vector(tmp3);
+	   for i in 0 to 2 loop
+			tmp := unsigned(a((i*8 + 7) downto  i*8)) * unsigned(k(i downto i)) + unsigned(b((i*8 + 7) downto  i * 8));
+			result((i*9 + 8) downto  i*9) <= std_logic_vector(tmp);
+	   end loop;
 	end process;
 end arch;

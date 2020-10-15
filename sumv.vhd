@@ -20,7 +20,5 @@ begin
 			result( 8 downto  0) <= std_logic_vector(tmp1);
 			result(17 downto  9) <= std_logic_vector(tmp2);
 			result(26 downto 18) <= std_logic_vector(tmp3);
-			--tmp := unsigned(a) * unsigned(k) + unsigned(b);
-			--result <= std_logic_vector(tmp);
 	end process;
 end arch;
